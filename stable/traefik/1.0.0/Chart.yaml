@@ -1,0 +1,24 @@
+apiVersion: v2
+appVersion: "2.9.6"
+dependencies:
+  - name: common
+    repository: https://library-charts.truecharts.org
+    version: 11.1.2
+deprecated: false
+description: Traefik is a flexible reverse proxy and Ingress Provider.
+home: https://github.com/davejefferies/TrueCatalog/tree/master/stable/traefik
+icon: https://cdn.jsdelivr.net/gh/docker-library/docs@defa5ffc7123177acd60ddef6e16bddf694cc35f/traefik/logo.png
+keywords:
+  - traefik
+  - ingress
+kubeVersion: ">=1.16.0-0"
+maintainers:
+  - email: david_jefferies@icloud.com
+    name: David Jefferies
+name: traefik
+sources:
+  - https://github.com/traefik/traefik
+  - https://github.com/traefik/traefik-helm-chart
+  - https://traefik.io/
+type: application
+version: 1.0.0
