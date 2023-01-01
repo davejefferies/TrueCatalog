@@ -17,6 +17,21 @@
       "latest_app_version": "2.1.1",
       "latest_human_version": "2.1.1_1.0.0",
       "icon_url": "https://github.com/linuxserver/docker-templates/raw/master/linuxserver.io/img/deluge-icon.png"
+    },
+    "qbittorent": {
+      "name": "qbittorent",
+      "categories": [
+        "media",
+        "torrent"
+      ],
+      "app_readme": "<h1>Qbittorent</h1>\n<p><a href=\"https://qbittorrent.com/\">qbittorent</a> is a utorrent downloading client.</p>",
+      "location": "/__w/charts/charts/charts/qbittorent",
+      "healthy": true,
+      "healthy_error": null,
+      "latest_version": "1.0.9",
+      "latest_app_version": "4.5.0",
+      "latest_human_version": "4.5.0_1.0.9",
+      "icon_url": "https://github.com/linuxserver/docker-templates/raw/master/linuxserver.io/img/qbittorrent-icon.png"
     }
   }
 }
