@@ -1,7 +1,0 @@
-# README
-
-## General Info
-
-## Support
-
----

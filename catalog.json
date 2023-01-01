@@ -2,20 +2,5 @@
   "dependency": {},
   "dev": {},
   "enterprise": {},
-  "stable" : {
-    "traefik": {
-      "name": "traefik",
-      "categories": [
-        "network"
-      ],
-      "app_readme": "<p>Traefik is a flexible reverse proxy and Ingress Provider.</p>\n<p>Traefik is a flexible reverse proxy and Ingress Provider.</p>",
-      "location": "/home/runner/work/truecatalog/catalog/stable/traefik",
-      "healthy": true,
-      "healthy_error": null,
-      "latest_version": "1.0.1",
-      "latest_app_version": "2.9.6",
-      "latest_human_version": "2.9.6_1.0.1",
-      "icon_url": "https://cdn.jsdelivr.net/gh/docker-library/docs@defa5ffc7123177acd60ddef6e16bddf694cc35f/traefik/logo.png"
-    }
-  }
+  "stable" : {}
 }
