@@ -1,0 +1,9 @@
+apiVersion: v2
+appVersion: latest
+description: Common Library
+keywords:
+- common
+kubeVersion: '>=1.16.0-0'
+name: common
+type: library
+version: 2023.01.01
