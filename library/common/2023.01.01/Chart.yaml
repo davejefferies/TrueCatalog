@@ -1,9 +1,6 @@
 apiVersion: v2
-appVersion: latest
-description: Common Library
-keywords:
-- common
-kubeVersion: '>=1.16.0-0'
 name: common
+description: A library chart for truenas Catalog
 type: library
 version: 2023.01.01
+appVersion: v1

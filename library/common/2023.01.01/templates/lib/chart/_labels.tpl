@@ -1,23 +1,24 @@
-{{/* Common labels shared across objects */}}
-{{- define "tc.common.labels" -}}
-helm.sh/chart: {{ include "tc.common.names.chart" . }}
-{{ include "tc.common.labels.selectorLabels" . }}
+{{/*
+Common labels shared across objects.
+*/}}
+{{- define "common.labels" -}}
+helm.sh/chart: {{ include "common.names.chart" . }}
+{{ include "common.labels.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
-helm-revision: "{{ .Release.Revision }}"
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
-{{- with .Values.global.labels }}
-  {{- range $k, $v := . }}
-    {{- $name := $k }}
-    {{- $value := tpl $v $ }}
-{{ $name }}: {{ quote $value }}
-    {{- end }}
 {{- end }}
-{{- end -}}
 
-{{/* Selector labels shared across objects */}}
-{{- define "tc.common.labels.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "tc.common.names.name" . }}
-app.kubernetes.io/instance: {{ .Release.Name }}
-{{- end -}}
+{{/*
+Selector labels shared across objects.
+*/}}
+{{- define "common.labels.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "common.names.name" . }}
+app.kubernetes.io/instance: {{ include "common.names.releaseName" . }}
+{{ if hasKey .Values "extraSelectorLabels" }}
+{{ range $selector := .Values.extraSelectorLabels }}
+{{ printf "%s: %s" $selector.key $selector.value }}
+{{ end }}
+{{ end }}
+{{- end }}

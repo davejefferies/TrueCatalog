@@ -1,19 +1,27 @@
-{{/* Allow KubeVersion to be overridden. */}}
-{{- define "tc.common.capabilities.ingress.kubeVersion" -}}
-  {{- default .Capabilities.KubeVersion.Version .Values.kubeVersionOverride -}}
+{{/*
+Return the appropriate apiVersion for DaemonSet objects.
+*/}}
+{{- define "common.capabilities.daemonset.apiVersion" -}}
+{{- print "apps/v1" -}}
 {{- end -}}
 
-{{/* Return the appropriate apiVersion for Ingress objects */}}
-{{- define "tc.common.capabilities.ingress.apiVersion" -}}
-  {{- print "networking.k8s.io/v1" -}}
-  {{- if semverCompare "<1.19" (include "tc.common.capabilities.ingress.kubeVersion" .) -}}
-    {{- print "beta1" -}}
-  {{- end -}}
+{{/*
+Return the appropriate apiVersion for Deployment objects.
+*/}}
+{{- define "common.capabilities.deployment.apiVersion" -}}
+{{- print "apps/v1" -}}
 {{- end -}}
 
-{{/* Check Ingress stability */}}
-{{- define "tc.common.capabilities.ingress.isStable" -}}
-  {{- if eq (include "tc.common.capabilities.ingress.apiVersion" .) "networking.k8s.io/v1" -}}
-    {{- true -}}
-  {{- end -}}
+{{/*
+Return the appropriate apiVersion for StatefulSet objects.
+*/}}
+{{- define "common.capabilities.statefulset.apiVersion" -}}
+{{- print "apps/v1" -}}
+{{- end -}}
+
+{{/*
+Return the appropriate apiVersion for StatefulSet objects.
+*/}}
+{{- define "common.capabilities.cronjob.apiVersion" -}}
+{{- print "batch/v1beta1" -}}
 {{- end -}}

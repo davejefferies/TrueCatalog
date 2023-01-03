@@ -1,23 +1,11 @@
-# Introduction
+# Library Chart for Truenas Catalog
 
-Common library
+**WARNING: THIS CHART IS NOT MEANT TO BE INSTALLED DIRECTLY**
 
-## Requirements
+This is a [Helm Library Chart](https://helm.sh/docs/topics/library_charts/#helm). It's purpose is for grouping common logic between the k8s@home charts. 
 
-Kubernetes: `>=1.16.0-0`
+Since a lot of charts follow the same pattern this library was built to reduce maintenance cost between the charts that use it and try achieve a goal of being DRY.
 
-## Dependencies
+## Introduction
 
-| Repository | Name | Version |
-|------------|------|---------|
-
-## Installing the Chart
-
-This is a Helm Library Chart.
-WARNING: THIS CHART IS NOT MEANT TO BE INSTALLED DIRECTLY
-
-## Support
-
-
----
-All Rights Reserved
+This chart provides common template helpers which can be used to develop new charts using [Helm](https://helm.sh) package manager.

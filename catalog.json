@@ -1,19 +1,20 @@
 {
   "dependency": {},
   "dev": {
-    "filebrowser": {
-      "name": "filebrowser",
+    "qbittorent": {
+      "name": "qbittorent",
       "categories": [
-        "media"
+        "media",
+        "torrent"
       ],
-      "app_readme": "<p>Filebrowser provides a file managing interface within a specified directory</p>\n<p></p>",
-      "location": "/home/runner/work/truecatalog/stable/filebrowser",
+      "app_readme": "<h1>Qbittorent</h1>\n<p><a href=\"https://qbittorrent.com/\">qbittorent</a> is a utorrent downloading client.</p>",
+      "location": "/__w/charts/charts/charts/qbittorent",
       "healthy": true,
       "healthy_error": null,
       "latest_version": "1.0.0",
-      "latest_app_version": "2.23.0",
-      "latest_human_version": "2.23.0_1.0.0",
-      "icon_url": "https://github.com/filebrowser/filebrowser/blob/73ccbe912fc1848957d8b2f6bbe5243804769d85/frontend/public/img/logo.svg"
+      "latest_app_version": "4.5.0",
+      "latest_human_version": "4.5.0_1.0.0",
+      "icon_url": "https://github.com/linuxserver/docker-templates/raw/master/linuxserver.io/img/qbittorrent-icon.png"
     }
   },
   "enterprise": {},
