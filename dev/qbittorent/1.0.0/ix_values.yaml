@@ -2,3 +2,42 @@ image:
   pullPolicy: IfNotPresent
   repository: linuxserver/qbittorrent
   tag: 4.5.0
+
+securityContext:
+  readOnlyRootFilesystem: false
+
+service:
+  main:
+    ports:
+      main:
+        port: 10095
+        targetPort: 8080
+  torrent:
+    enabled: true
+    ports:
+      torrent:
+        enabled: true
+        port: 6881
+  torrentudp:
+    enabled: true
+    ports:
+      torrentudp:
+        enabled: true
+        port: 6881
+        protocol: UDP
+
+persistence:
+  config:
+    enabled: true
+    mountPath: "/config"
+
+additionalVolumes:
+  - name: qbittorrent-scripts
+    emptyDir: {}
+
+additionalVolumeMounts:
+  - mountPath: "/config/custom-cont-init.d"
+    name: qbittorrent-scripts
+
+portal:
+  enabled: true

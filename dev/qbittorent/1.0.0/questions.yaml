@@ -1,10 +1,10 @@
 groups:
   - name: "Configuration"
-    description: "Qbittorent application configuration"
+    description: "application configuration"
   - name: "Storage"
-    description: "Configure storage for qbittorent"
+    description: "Configure storage"
   - name: "Networking"
-    description: "Networking Configuration for qbittorent"
+    description: "Networking Configuration"
   - name: "Advanced DNS Settings"
     description: "Configure DNS settings"
   - name: "Resource Limits"
@@ -22,16 +22,16 @@ portals:
 
 questions:
   - variable: web_port
-    label: "Web Port for qbittorent"
+    label: "Web Port"
     group: Networking
     schema:
       type: int
       min: 8000
       max: 65535
-      default: 8080
+      default: 10095
       required: true
   - variable: tcp_port
-    label: "TCP Port for qbittorent"
+    label: "TCP Port"
     group: Networking
     schema:
       type: int
@@ -40,7 +40,7 @@ questions:
       default: 20988
       required: true
   - variable: udp_port
-    label: "UDP Port for qbittorent"
+    label: "UDP Port"
     group: Networking
     schema:
       type: int
@@ -103,7 +103,7 @@ questions:
         - "definitions/timezone"
 
   - variable: environmentVariables
-    label: "Qbittorent environment"
+    label: "Environment"
     group: "Configuration"
     schema:
       type: list
@@ -124,7 +124,7 @@ questions:
                   type: string
 
   - variable: appVolumeMounts
-    label: "Qbittorent Storage"
+    label: "Storage"
     group: "Storage"
     schema:
       type: dict
@@ -153,14 +153,14 @@ questions:
                   editable: true
                   default: "/config"
               - variable: hostPathEnabled
-                label: "Enable Custom Host Path for Qbittorent Configuration Volume"
+                label: "Enable Custom Host Path for Configuration Volume"
                 schema:
                   type: boolean
                   default: false
                   show_subquestions_if: true
                   subquestions:
                     - variable: hostPath
-                      label: "Host Path for Qbittorent Configuration Volume"
+                      label: "Host Path for Configuration Volume"
                       schema:
                         type: hostpath
                         required: true
@@ -188,14 +188,14 @@ questions:
                   editable: true
                   default: "/downloads"
               - variable: hostPathEnabled
-                label: "Enable Custom Host Path for Qbittorent Downloads Volume"
+                label: "Enable Custom Host Path for Downloads Volume"
                 schema:
                   type: boolean
                   default: false
                   show_subquestions_if: true
                   subquestions:
                     - variable: hostPath
-                      label: "Host Path for Qbittorent Downloads Volume"
+                      label: "Host Path for Downloads Volume"
                       schema:
                         type: hostpath
                         required: true
@@ -208,7 +208,7 @@ questions:
       items:
         - variable: extraAppVolume
           label: "Host Path Volume"
-          description: "Add an extra host path volume for Qbittorent application"
+          description: "Add an extra host path volume"
           schema:
             type: dict
             attrs:
