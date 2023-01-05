@@ -1,6 +1,6 @@
 groups:
   - name: "Configuration"
-    description: "application configuration"
+    description: "Application configuration"
   - name: "Storage"
     description: "Configure storage"
   - name: "Networking"
@@ -28,7 +28,7 @@ questions:
       type: int
       min: 8000
       max: 65535
-      default: 10095
+      default: 20909
       required: true
   - variable: tcp_port
     label: "TCP Port"
@@ -142,7 +142,7 @@ questions:
                   $ref:
                     - "normalize/ixVolume"
                   show_if: [["hostPathEnabled", "=", false]]
-                  default: "ix-qbittorent_config"
+                  default: "ix-deluge_config"
                   editable: false
               - variable: mountPath
                 label: "Configuration Mount Path"
@@ -177,7 +177,7 @@ questions:
                   $ref:
                     - "normalize/ixVolume"
                   show_if: [["hostPathEnabled", "=", false]]
-                  default: "ix-qbittorent_data"
+                  default: "ix-deluge_data"
                   editable: false
               - variable: mountPath
                 label: "Downloads Mount Path"
@@ -208,7 +208,7 @@ questions:
       items:
         - variable: extraAppVolume
           label: "Host Path Volume"
-          description: "Add an extra host path volume"
+          description: "Add an extra host path volume for application"
           schema:
             type: dict
             attrs:
