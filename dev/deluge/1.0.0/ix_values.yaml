@@ -1,4 +1,0 @@
-image:
-  pullPolicy: IfNotPresent
-  repository: linuxserver/docker-deluge
-  tag: 2.1.1
