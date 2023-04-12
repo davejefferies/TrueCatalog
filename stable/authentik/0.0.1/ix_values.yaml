@@ -4,8 +4,8 @@ image:
   pullPolicy: IfNotPresent
 
 geoipImage:
-  repository: tccr.io/truecharts/geoipupdate
-  tag: v4.9@sha256:ce42b4252c8cd4a9e39275fd7c3312e5df7bda0d7034df565af4362d7e0d26ce
+  repository: ghcr.io/maxmind/geoipupdate
+  tag: v4.11.0@sha256:423f7eeec13865240ca2b2516b9edf43c6b3e9ad6f8c66082935a3e2e7a7efcd
   pullPolicy: IfNotPresent
 
 ldapImage:
