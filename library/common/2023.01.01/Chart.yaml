@@ -1,6 +1,0 @@
-apiVersion: v2
-name: common
-description: A library chart for truenas Catalog
-type: library
-version: 2023.01.01
-appVersion: v1
