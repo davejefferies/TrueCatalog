@@ -8,6 +8,7 @@
       "categories": [
         "networking"
       ],
+      "description": "Automate Cloudflare DNS records for those with a dynamic IP",
       "healthy": true,
       "healthy_error": null,
       "location": "/__w/catalog/stable/cloudflareddns",
@@ -16,6 +17,21 @@
       "latest_human_version": "latest_1.0.3",
       "name": "cloudflareddns",
       "icon_url": "https://hotio.dev/img/image-logos/cloudflareddns.svg"
+    },
+    "qbittorrent": {
+      "app_readme": "<p>qBittorrent is a cross-platform free and open-source BitTorrent client</p>",
+      "categories": [
+        "media"
+      ],
+      "description": "qBittorrent is a cross-platform free and open-source BitTorrent client",
+      "healthy": true,
+      "healthy_error": null,
+      "location": "/__w/catalog/stable/qbittorrent",
+      "latest_version": "1.0.0",
+      "latest_app_version": "latest",
+      "latest_human_version": "latest_1.0.0",
+      "name": "qbittorrent",
+      "icon_url": "https://hotio.dev/img/image-logos/qbittorrent.svg"
     }
   }
 }
