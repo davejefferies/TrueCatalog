@@ -3,20 +3,6 @@
   "dev": {},
   "enterprise": {},
   "stable" : {
-    "authentik": {
-      "name": "authentik",
-      "categories": [
-        "authentication"
-      ],
-      "app_readme": "<p>authentik is an open-source Identity Provider focused on flexibility and versatility.</p>\n<p>This App is supplied by TrueCharts, for more information visit the manual: <a href=\"https://truecharts.org/charts/stable/authentik\">https://truecharts.org/charts/stable/authentik</a></p>\n<hr />\n<p>TrueCharts can only exist due to the incredible effort of our staff.\nPlease consider making a <a href=\"https://truecharts.org/sponsor\">donation</a> or contributing back to the project any way you can!</p>",
-      "location": "/home/runner/work/catalog/catalog/stable/authentik",
-      "healthy": true,
-      "healthy_error": null,
-      "latest_version": "0.0.1",
-      "latest_app_version": "2023.3.1",
-      "latest_human_version": "2023.3.1_0.0.1",
-      "icon_url": "https://truecharts.org/img/hotlink-ok/chart-icons/authentik.png"
-    },
     "cloudflareddns": {
       "app_readme": "<p>Automate Cloudflare DNS records for those with a dynamic IP.</p>",
       "categories": [
