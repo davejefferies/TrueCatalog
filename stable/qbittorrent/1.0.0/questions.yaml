@@ -19,10 +19,6 @@ groups:
     description: "Specify Resources/Devices to be Allocated to Workload"
   - name: Middlewares
     description: Traefik Middlewares
-  - name: Metrics
-    description: Metrics
-  - name: Advanced
-    description: Advanced Configuration
   - name: Postgresql
     description: Postgresql
 portals:
