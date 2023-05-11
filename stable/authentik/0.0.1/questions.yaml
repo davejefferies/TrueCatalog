@@ -17,16 +17,6 @@ groups:
     description: "Specify Resources/Devices to be Allocated to Workload"
   - name: Middlewares
     description: Traefik Middlewares
-  - name: Metrics
-    description: Metrics
-  - name: VPN
-    description: VPN
-  - name: Addons
-    description: Addon Configuration
-  - name: Advanced
-    description: Advanced Configuration
-  - name: Documentation
-    description: Documentation
 portals:
   open:
     protocols:
