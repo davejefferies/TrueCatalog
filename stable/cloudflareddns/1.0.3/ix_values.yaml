@@ -1,7 +1,7 @@
 image:
-  repository: ghcr.io/joshuaavalon/cloudflare-ddns
+  repository: hotio/cloudflareddns
   pullPolicy: IfNotPresent
-  tag: latest@sha256:3fbd3f66433fe621f3b9a692f1880e6d3b65464bd79b7daabc723b2added07a6
+  tag: latest
 
 securityContext:
   container:
