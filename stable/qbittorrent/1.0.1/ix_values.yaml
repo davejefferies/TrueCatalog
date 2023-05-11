@@ -1,7 +1,7 @@
 image:
   repository: linuxserver/qbittorrent
   pullPolicy: IfNotPresent
-  tag: latest
+  tag: 4.5.2
 service:
   main:
     ports:
