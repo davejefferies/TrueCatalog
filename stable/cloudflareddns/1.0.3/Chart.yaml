@@ -7,7 +7,7 @@ dependencies:
 deprecated: false
 description: Automate Cloudflare DNS records for those with a dynamic IP.
 home: https://github.com/davejefferies/TrueCatalog/tree/master/stable/cloudflareddns
-icon: https://github.com/davejefferies/TrueCatalog/tree/master/icon/cloudflareddns.svg
+icon: https://raw.githubusercontent.com/davejefferies/TrueCatalog/tree/master/icon/cloudflareddns.svg
 keywords:
   - cloudflareddns
   - ddns
