@@ -47,6 +47,21 @@
       "latest_human_version": "2.23.0_1.0.0",
       "name": "filebrowser",
       "icon_url": ""
+    },
+    "traefik": {
+      "app_readme": "<p>Traefik is a flexible reverse proxy and Ingress Provider.</p>",
+      "categories": [
+        "network"
+      ],
+      "description": "Traefik is a flexible reverse proxy and Ingress Provider",
+      "healthy": true,
+      "healthy_error": null,
+      "location": "/__w/catalog/stable/traefik",
+      "latest_version": "1.0.0",
+      "latest_app_version": "3.0.0",
+      "latest_human_version": "3.0.0_1.0.0",
+      "name": "traefik",
+      "icon_url": "https://d1q6f0aelx0por.cloudfront.net/product-logos/library-traefik-logo.png"
     }
   }
 }

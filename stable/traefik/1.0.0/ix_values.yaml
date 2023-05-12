@@ -1,0 +1,237 @@
+image:
+  repository: traefik
+  pullPolicy: IfNotPresent
+  tag: 3.0
+
+workload:
+  main:
+    replicas: 2
+    strategy: RollingUpdate
+    podSpec:
+      containers:
+        main:
+          args: []
+          probes:
+            liveness:
+              type: tcp
+            readiness:
+              type: tcp
+            startup:
+              type: tcp
+
+podOptions:
+  automountServiceAccountToken: true
+
+ingressClass:
+  enabled: false
+  isDefaultClass: false
+  fallbackApiVersion: ""
+
+ingressRoute:
+  dashboard:
+    enabled: true
+    annotations: {}
+    labels: {}
+
+providers:
+  kubernetesCRD:
+    enabled: true
+    namespaces:
+      []
+  kubernetesIngress:
+    enabled: true
+    namespaces:
+      []
+    publishedService:
+      enabled: true
+
+logs:
+  general:
+    level: ERROR
+    format: common
+  access:
+    enabled: false
+    filters:
+      {}
+    fields:
+      general:
+        defaultmode: keep
+        names:
+          {}
+      headers:
+        defaultmode: drop
+        names:
+          {}
+    format: common
+
+metrics:
+  main:
+    enabled: true
+    type: servicemonitor
+    endpoints:
+      - port: metrics
+        path: /metrics
+    targetSelector: metrics
+
+globalArguments:
+
+additionalArguments:
+
+tlsOptions:
+  default:
+    sniStrict: false
+    minVersion: VersionTLS12
+    curvePreferences:
+      - CurveP521
+      - CurveP384
+    cipherSuites:
+      - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+      - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+      - TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305
+      - TLS_AES_128_GCM_SHA256
+      - TLS_AES_256_GCM_SHA384
+      - TLS_CHACHA20_POLY1305_SHA256
+
+service:
+  main:
+    type: LoadBalancer
+    ports:
+      main:
+        port: 9000
+        targetPort: 9000
+        protocol: http
+        forwardedHeaders:
+          enabled: false
+        proxyProtocol:
+          enabled: false
+  tcp:
+    enabled: true
+    type: LoadBalancer
+    ports:
+      web:
+        enabled: true
+        port: 9080
+        protocol: http
+        redirectTo: websecure
+        forwardedHeaders:
+          enabled: false
+          trustedIPs: []
+          insecureMode: false
+        proxyProtocol:
+          enabled: false
+          trustedIPs: []
+          insecureMode: false
+      websecure:
+        enabled: true
+        port: 9443
+        protocol: https
+        forwardedHeaders:
+          enabled: false
+          trustedIPs: []
+          insecureMode: false
+        proxyProtocol:
+          enabled: false
+          trustedIPs: []
+          insecureMode: false
+  metrics:
+    enabled: true
+    type: ClusterIP
+    ports:
+      metrics:
+        enabled: true
+        port: 9180
+        targetPort: 9180
+        protocol: http
+        forwardedHeaders:
+          enabled: false
+        proxyProtocol:
+          enabled: false
+
+rbac:
+  main:
+    enabled: true
+    primary: true
+    clusterWide: true
+    rules:
+      - apiGroups:
+          - ""
+        resources:
+          - services
+          - endpoints
+          - secrets
+        verbs:
+          - get
+          - list
+          - watch
+      - apiGroups:
+          - extensions
+          - networking.k8s.io
+        resources:
+          - ingresses
+          - ingressclasses
+        verbs:
+          - get
+          - list
+          - watch
+      - apiGroups:
+          - extensions
+          - networking.k8s.io
+        resources:
+          - ingresses/status
+        verbs:
+          - update
+      - apiGroups:
+          - traefik.io
+          - traefik.containo.us
+        resources:
+          - middlewares
+          - middlewaretcps
+          - ingressroutes
+          - traefikservices
+          - ingressroutetcps
+          - ingressrouteudps
+          - tlsoptions
+          - tlsstores
+          - serverstransports
+        verbs:
+          - get
+          - list
+          - watch
+
+serviceAccount:
+  main:
+    enabled: true
+    primary: true
+
+middlewares:
+  basicAuth: []
+  forwardAuth: []
+  chain: []
+  redirectScheme: []
+  rateLimit: []
+  redirectRegex: []
+  stripPrefixRegex: []
+  ipWhiteList: []
+  themeParkVersion: v1.3.0
+  themePark: []
+  realIPVersion: v1.0.3
+  realIP: []
+  addPrefix: []
+  geoBlockVersion: v0.2.4
+  geoBlock: []
+
+portalhook:
+  enabled: true
+
+persistence:
+  plugins:
+    enabled: true
+    mountPath: "/plugins-storage"
+    type: emptyDir
+
+portal:
+  open:
+    enabled: true
+    path: /dashboard/
+    override:
+      protocol: http

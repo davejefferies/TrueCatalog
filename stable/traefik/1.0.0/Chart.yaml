@@ -1,0 +1,20 @@
+apiVersion: v2
+appVersion: "3.0.0"
+dependencies:
+  - name: common
+    repository: file://../../../common
+    version: 1.0.0
+description: Traefik is a flexible reverse proxy and Ingress Provider.
+icon: https://d1q6f0aelx0por.cloudfront.net/product-logos/library-traefik-logo.png
+keywords:
+  - traefik
+  - ingress
+kubeVersion: ">=1.16.0-0"
+name: traefik
+sources:
+  - https://github.com/davejefferies/TrueCatalog/tree/master/stable/traefik
+  - https://github.com/traefik/traefik
+  - https://github.com/traefik/traefik-helm-chart
+  - https://traefik.io/
+type: application
+version: 1.0.0
