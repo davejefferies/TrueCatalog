@@ -1,7 +1,7 @@
 image:
   repository: traefik
   pullPolicy: IfNotPresent
-  tag: 3.0
+  tag: v3.0
 
 workload:
   main:
