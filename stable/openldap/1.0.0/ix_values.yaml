@@ -1,30 +1,7 @@
 image:
   repository: bitnami/openldap
   pullPolicy: IfNotPresent
-  tag: 2.6.4
-
-securityContext:
-  readOnlyRootFilesystem: false
-  runAsNonRoot: false
-
-podSecurityContext:
-  runAsUser: 0
-  runAsGroup: 0
-
-controller:
-  type: statefulset
-  replicas: 1
-  strategy: RollingUpdate
-  rollingUpdate:
-    unavailable: 1
-    surge:
-    partition:
-  revisionHistoryLimit: 3
-
-persistence:
-  varrun:
-    enabled: false
-
+  tag: 2.6.0
 service:
   main:
     ports:
@@ -38,6 +15,26 @@ service:
         enabled: true
         port: 636
         targetPort: 636
+persistence:
+  config:
+    enabled: true
+    mountPath: "/config"
+additionalVolumes:
+  - name: qbittorrent-scripts
+    emptyDir: {}
+additionalVolumeMounts:
+  - mountPath: "/config/custom-cont-init.d"
+    name: qbittorrent-scripts
+portal:
+  open:
+    enabled: true
+
+securityContext:
+  container:
+    runAsNonRoot: false
+    readOnlyRootFilesystem: false
+    runAsUser: 0
+    runAsGroup: 0
 
 secretEnv:
   LDAP_ADMIN_PASSWORD: "ldapadmin"
@@ -84,8 +81,3 @@ volumeClaimTemplates:
   slapd:
     enabled: true
     mountPath: "/etc/ldap/slapd.d/"
-
-portal:
-  open:
-    enabled: true
-  enabled: true
