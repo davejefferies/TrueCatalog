@@ -1,0 +1,32 @@
+apiVersion: v2
+appVersion: "4.37.5"
+dependencies:
+  - name: common
+    repository: file://../../../common
+    version: 1.0.0
+  - condition: redis.enabled
+    name: redis
+    repository: file://../../../common
+    version: 1.0.0
+description: Authelia is a Single Sign-On Multi-Factor portal for web apps
+icon: https://raw.githubusercontent.com/davejefferies/TrueCatalog/master/icon/authelia.png
+keywords:
+  - authelia
+  - authentication
+  - login
+  - SSO
+  - Authentication
+  - Security
+  - Two-Factor
+  - U2F
+  - YubiKey
+  - Push Notifications
+  - LDAP
+kubeVersion: ">=1.16.0-0"
+name: authelia
+sources:
+  - https://github.com/davejefferies/TrueCatalog/tree/master/stable/authelia
+  - https://github.com/authelia/chartrepo
+  - https://github.com/authelia/authelia
+type: application
+version: 1.0.0

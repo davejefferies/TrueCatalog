@@ -1,0 +1,20 @@
+apiVersion: v2
+appVersion: 7.0.11
+dependencies:
+  - name: common
+    repository: file://../../../../common
+    version: 1.0.0
+description: Open source, advanced key-value store.
+icon: https://raw.githubusercontent.com/davejefferies/TrueCatalog/master/icon/redis.png
+keywords:
+  - redis
+  - keyvalue
+  - database
+kubeVersion: '>=1.16.0-0'
+name: redis
+sources:
+  - https://github.com/davejefferies/TrueCatalog/tree/master/library/redis
+  - https://github.com/bitnami/bitnami-docker-redis
+  - http://redis.io/
+type: application
+version: 1.0.0
