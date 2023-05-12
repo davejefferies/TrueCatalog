@@ -86,4 +86,6 @@ volumeClaimTemplates:
     mountPath: "/etc/ldap/slapd.d/"
 
 portal:
-  enabled: false
+  open:
+    enabled: true
+  enabled: true
