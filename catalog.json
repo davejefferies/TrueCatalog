@@ -33,21 +33,6 @@
       "name": "filebrowser",
       "icon_url": "https://raw.githubusercontent.com/davejefferies/TrueCatalog/master/icon/filebrowser.svg"
     },
-    "openldap": {
-      "app_readme": "<p>Community developed LDAP software.</p>",
-      "categories": [
-        "cloud"
-      ],
-      "description": "Community developed LDAP software",
-      "healthy": true,
-      "healthy_error": null,
-      "location": "/__w/catalog/stable/openldap",
-      "latest_version": "1.0.0",
-      "latest_app_version": "2.6.4",
-      "latest_human_version": "2.6.4_1.0.0",
-      "name": "openldap",
-      "icon_url": "https://raw.githubusercontent.com/davejefferies/TrueCatalog/master/icon/openldap.png"
-    },
     "qbittorrent": {
       "app_readme": "<p>qBittorrent is a cross-platform free and open-source BitTorrent client</p>",
       "categories": [
