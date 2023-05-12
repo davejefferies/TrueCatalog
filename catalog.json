@@ -16,22 +16,7 @@
       "latest_app_version": "latest",
       "latest_human_version": "latest_1.0.3",
       "name": "cloudflareddns",
-      "icon_url": "https://hotio.dev/img/image-logos/cloudflareddns.svg"
-    },
-    "qbittorrent": {
-      "app_readme": "<p>qBittorrent is a cross-platform free and open-source BitTorrent client</p>",
-      "categories": [
-        "media"
-      ],
-      "description": "qBittorrent is a cross-platform free and open-source BitTorrent client",
-      "healthy": true,
-      "healthy_error": null,
-      "location": "/__w/catalog/stable/qbittorrent",
-      "latest_version": "1.0.1",
-      "latest_app_version": "4.5.2",
-      "latest_human_version": "4.5.2_1.0.1",
-      "name": "qbittorrent",
-      "icon_url": "https://hotio.dev/img/image-logos/qbittorrent.svg"
+      "icon_url": "https://github.com/davejefferies/TrueCatalog/tree/master/icon/cloudflareddns.svg"
     },
     "filebrowser": {
       "app_readme": "<p>Filebrowser provides a file managing interface within a specified directory.</p>",
@@ -46,7 +31,37 @@
       "latest_app_version": "2.23.0",
       "latest_human_version": "2.23.0_1.0.0",
       "name": "filebrowser",
-      "icon_url": ""
+      "icon_url": "https://github.com/davejefferies/TrueCatalog/tree/master/icon/filebrowser.svg"
+    },
+    "openldap": {
+      "app_readme": "<p>Community developed LDAP software.</p>",
+      "categories": [
+        "cloud"
+      ],
+      "description": "Community developed LDAP software",
+      "healthy": true,
+      "healthy_error": null,
+      "location": "/__w/catalog/stable/openldap",
+      "latest_version": "1.0.0",
+      "latest_app_version": "2.6.4",
+      "latest_human_version": "2.6.4_1.0.0",
+      "name": "openldap",
+      "icon_url": "https://github.com/davejefferies/TrueCatalog/tree/master/icon/openldap.png"
+    },
+    "qbittorrent": {
+      "app_readme": "<p>qBittorrent is a cross-platform free and open-source BitTorrent client</p>",
+      "categories": [
+        "media"
+      ],
+      "description": "qBittorrent is a cross-platform free and open-source BitTorrent client",
+      "healthy": true,
+      "healthy_error": null,
+      "location": "/__w/catalog/stable/qbittorrent",
+      "latest_version": "1.0.1",
+      "latest_app_version": "4.5.2",
+      "latest_human_version": "4.5.2_1.0.1",
+      "name": "qbittorrent",
+      "icon_url": "https://github.com/davejefferies/TrueCatalog/tree/master/icon/qbittorrent.svg"
     },
     "traefik": {
       "app_readme": "<p>Traefik is a flexible reverse proxy and Ingress Provider.</p>",
@@ -61,7 +76,7 @@
       "latest_app_version": "3.0.0",
       "latest_human_version": "3.0.0_1.0.0",
       "name": "traefik",
-      "icon_url": "https://d1q6f0aelx0por.cloudfront.net/product-logos/library-traefik-logo.png"
+      "icon_url": "https://github.com/davejefferies/TrueCatalog/tree/master/icon/traefik.png"
     }
   }
 }

@@ -1,11 +1,11 @@
 apiVersion: v2
-appVersion: "1.0.0"
+appVersion: "2.23.0"
 dependencies:
   - name: common
     repository: file://../../../common
     version: 1.0.0
 description: Filebrowser provides a file managing interface within a specified directory
-icon: ''
+icon: https://github.com/davejefferies/TrueCatalog/tree/master/icon/filebrowser.svg
 keywords:
   - filebrowser
 kubeVersion: ">=1.16.0-0"
