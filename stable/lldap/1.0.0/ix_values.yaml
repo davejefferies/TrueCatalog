@@ -30,6 +30,7 @@ workload:
           args: ["run"]
           env:
             LLDAP_LDAP_BASE_DN: "dc=example,dc=com"
+            LLDAP_LDAP_USER_PASS: 'REPLACEME'
             LLDAP_JWT_SECRET:
               - secretRef:
                   name: secrets
