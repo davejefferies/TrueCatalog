@@ -5,7 +5,7 @@ dependencies:
     repository: file://../../../common
     version: 1.0.0
 description: Filebrowser provides a file managing interface within a specified directory
-icon: https://raw.githubusercontent.com/davejefferies/TrueCatalog/tree/master/icon/filebrowser.svg
+icon: https://raw.githubusercontent.com/davejefferies/TrueCatalog/master/icon/filebrowser.svg
 keywords:
   - filebrowser
 kubeVersion: ">=1.16.0-0"

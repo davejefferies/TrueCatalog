@@ -5,7 +5,7 @@ dependencies:
     repository: file://../../../common
     version: 1.0.0
 description: Community developed LDAP software
-icon: https://raw.githubusercontent.com/davejefferies/TrueCatalog/tree/master/icon/openldap.png
+icon: https://raw.githubusercontent.com/davejefferies/TrueCatalog/master/icon/openldap.png
 keywords:
   - ldap
   - openldap

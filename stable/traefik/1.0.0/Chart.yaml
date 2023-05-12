@@ -5,7 +5,7 @@ dependencies:
     repository: file://../../../common
     version: 1.0.0
 description: Traefik is a flexible reverse proxy and Ingress Provider.
-icon: https://raw.githubusercontent.com/davejefferies/TrueCatalog/tree/master/icon/traefik.png
+icon: https://raw.githubusercontent.com/davejefferies/TrueCatalog/master/icon/traefik.png
 keywords:
   - traefik
   - ingress
