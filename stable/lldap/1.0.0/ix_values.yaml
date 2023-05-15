@@ -1,0 +1,57 @@
+image:
+  repository: nitnelave/lldap
+  pullPolicy: IfNotPresent
+  tag: latest@sha256:aa547a175798be63d6ee214d7f1400b3f52c7f44b2a3301b682972cace782987
+
+securityContext:
+  container:
+    readOnlyRootFilesystem: false
+
+service:
+  main:
+    ports:
+      main:
+        targetPort: 17170
+        port: 17170
+  ldap:
+    enabled: true
+    ports:
+      ldap:
+        enabled: true
+        targetPort: 3890
+        port: 3890
+
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          command: ["/app/lldap"]
+          args: ["run"]
+          env:
+            LLDAP_LDAP_BASE_DN: "dc=example,dc=com"
+            LLDAP_LDAP_USER_PASS: "password"
+            LLDAP_JWT_SECRET:
+              - secretRef:
+                  name: secrets
+                  key: LLDAP_JWT_SECRET
+            LLDAP_key_file: "/data/private_key"
+            LLDAP_database_url:
+              secretKeyRef:
+                name: cnpg-main-urls
+                key: std
+
+persistence:
+  data:
+    enabled: true
+    mountPath: "/data"
+
+cnpg:
+  main:
+    enabled: true
+    user: lldap
+    database: lldap
+
+portal:
+  open:
+    enabled: true
