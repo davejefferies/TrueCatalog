@@ -80,19 +80,6 @@ questions:
                               type: dict
                               attrs:
                                 - variable: env
-                                    label: ""
-                                    group: "App Configuration"
-                                    schema:
-                                      additional_attrs: true
-                                      type: dict
-                                      attrs:
-                                        - variable: LLDAP_LDAP_BASE_DN
-                                          label: "Base DN for LDAP"
-                                          schema:
-                                            type: string
-                                            required: true
-                                            default: "dc=example,dc=com"
-                                - variable: env
                                   label: ""
                                   group: "App Configuration"
                                   schema:
@@ -105,6 +92,12 @@ questions:
                                           type: string
                                           required: true
                                           default: "password"
+                                      - variable: LLDAP_LDAP_BASE_DN
+                                        label: "Base DN for LDAP"
+                                        schema:
+                                          type: string
+                                          required: true
+                                          default: "dc=example,dc=com"
                                 - variable: envList
                                   label: Extra Environment Variables
                                   description: "Please be aware that some variables are set in the background, adding duplicates here might cause issues or prevent the app from starting..."
