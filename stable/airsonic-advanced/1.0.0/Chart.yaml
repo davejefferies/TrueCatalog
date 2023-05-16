@@ -1,0 +1,17 @@
+apiVersion: v2
+appVersion: "11.0.0"
+dependencies:
+  - name: common
+    repository: file://../../../common
+    version: 1.0.0
+description: Airsonic is a Free and Open Source community driven media server
+home: https://github.com/davejefferies/TrueCatalog/tree/master/stable/airsonic-advanced
+icon: https://truecharts.org/img/hotlink-ok/chart-icons/airsonic-advanced.png
+keywords:
+  - airsonic
+kubeVersion: ">=1.16.0-0"
+name: airsonic-advanced
+sources:
+  - https://github.com/davejefferies/TrueCatalog/tree/master/stable/airsonic-advanced
+  - https://github.com/airsonic/airsonic-advanced
+version: 1.0.0
