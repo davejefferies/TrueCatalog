@@ -1,0 +1,19 @@
+apiVersion: v2
+appVersion: "10.8.10"
+dependencies:
+  - name: common
+    repository: file://../../../common
+    version: 1.0.0
+description: Jellyfin is a Free Software Media System
+home: https://github.com/davejefferies/TrueCatalog/tree/master/stable/jellyfin
+icon: https://raw.githubusercontent.com/davejefferies/TrueCatalog/master/icon/jellyfin.svg
+keywords:
+  - jellyfin
+  - media
+kubeVersion: ">=1.16.0-0"
+name: jellyfin
+sources:
+  - https://github.com/davejefferies/TrueCatalog/tree/master/stable/jellyfin
+  - https://github.com/jellyfin/jellyfin
+type: application
+version: 1.0.0

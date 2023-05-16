@@ -1,0 +1,35 @@
+image:
+  repository: jellyfin/jellyfin
+  pullPolicy: IfNotPresent
+  tag: v10.8.10
+service:
+  main:
+    ports:
+      main:
+        port: 8096
+        targetPort: 8096
+persistence:
+  config:
+    enabled: true
+    mountPath: "/config"
+  cache:
+    enabled: true
+    mountPath: "/cache"
+    type: "emptyDir"
+  transcode:
+    enabled: true
+    mountPath: "/config/transcodes"
+    type: "emptyDir"
+portal:
+  open:
+    enabled: true
+securityContext:
+  container:
+    readOnlyRootFilesystem: false
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          env:
+            JELLYFIN_PublishedServerUrl: "https://jelly.mydomain.com"
