@@ -1,0 +1,45 @@
+image:
+  repository: keycloak/keycloak
+  pullPolicy: IfNotPresent
+  tag: 21.1
+
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          probes:
+            liveness:
+              type: http
+              path: /
+            readiness:
+              type: http
+              path: /
+            startup:
+              type: http
+              path: /
+          env:
+            KEYCLOAK_ADMIN: "admin"
+            KEYCLOAK_ADMIN_PASSWORD: "admin"
+
+service:
+  main:
+    ports:
+      main:
+        port: 10200
+        targetPort: 8080
+
+persistence:
+  config:
+    enabled: true
+    mountPath: /config
+  database:
+    enabled: true
+    mountPath: /database
+  data:
+    enabled: true
+    mountPath: /data
+
+portal:
+  open:
+    enabled: true

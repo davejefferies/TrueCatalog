@@ -3,22 +3,6 @@
   "dev": {},
   "enterprise": {},
   "stable" : {
-    "authelia": {
-      "app_readme": "<p>Authelia is a Single Sign-On Multi-Factor portal for web apps.</p>",
-      "categories": [
-        "authentication",
-        "security"
-      ],
-      "description": "Authelia is a Single Sign-On Multi-Factor portal for web apps.",
-      "healthy": true,
-      "healthy_error": null,
-      "location": "/__w/catalog/stable/authelia",
-      "latest_version": "1.0.0",
-      "latest_app_version": "4.37.5",
-      "latest_human_version": "4.37.5_1.0.0",
-      "name": "authelia",
-      "icon_url": "https://raw.githubusercontent.com/davejefferies/TrueCatalog/master/icon/authelia.png"
-    },
     "cloudflareddns": {
       "app_readme": "<p>Automate Cloudflare DNS records for those with a dynamic IP.</p>",
       "categories": [
@@ -63,6 +47,22 @@
       "latest_human_version": "10.8.10_1.0.0",
       "name": "jellyfin",
       "icon_url": "https://raw.githubusercontent.com/davejefferies/TrueCatalog/master/icon/jellyfin.svg"
+    },
+    "keycloak": {
+      "app_readme": "<p>Keycloak provides user federation, strong authentication, user management, fine-grained authorization, and more.</p>",
+      "categories": [
+        "auth",
+        "authentication"
+      ],
+      "description": "Keycloak provides user federation, strong authentication, user management, fine-grained authorization, and more",
+      "healthy": true,
+      "healthy_error": null,
+      "location": "/__w/catalog/stable/keycloak",
+      "latest_version": "1.0.0",
+      "latest_app_version": "21.1",
+      "latest_human_version": "21.1_1.0.0",
+      "name": "keycloak",
+      "icon_url": "https://raw.githubusercontent.com/davejefferies/TrueCatalog/master/icon/keycloak.svg"
     },
     "lldap": {
       "app_readme": "<p>Lightweight ldap server for authentication and user management.</p>",
