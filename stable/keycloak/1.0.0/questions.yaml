@@ -31,7 +31,7 @@ portals:
       - "$kubernetes-resource_configmap_tcportal-open_port"
 questions:
 
-  - variable: workload
+  - variable: Workload
     group: "Workload Settings"
     label: ""
     schema:
@@ -52,15 +52,14 @@ questions:
                   enum:
                     - value: Deployment
                       description: Deployment
-                    - value: DaemonSet
-                      description: DaemonSet
-
+                    - value: Daemonset
+                      description: Daemonset
               - variable: replicas
                 label: Replicas (Advanced)
                 description: Set the number of Replicas
                 schema:
                   type: int
-                  show_if: [["type", "!=", "DaemonSet"]]
+                  show_if: [["type", "!=", "Daemonset"]]
                   default: 1
               - variable: podSpec
                 label: ""
@@ -83,6 +82,7 @@ questions:
                                 - variable: envList
                                   label: Extra Environment Variables
                                   description: "Please be aware that some variables are set in the background, adding duplicates here might cause issues or prevent the app from starting..."
+                                  group: "General Settings"
                                   schema:
                                     type: list
                                     default: []
@@ -129,15 +129,6 @@ questions:
                                               label: Param
                                               schema:
                                                 type: string
-
-  - variable: TZ
-    label: Timezone
-    group: "General Settings"
-    schema:
-      type: string
-      default: "Etc/UTC"
-      $ref:
-        - "definitions/timezone"
   - variable: service
     group: Networking and Services
     label: Configure Service(s)
@@ -169,6 +160,8 @@ questions:
                       description: LoadBalancer (Expose Ports)
                     - value: ClusterIP
                       description: ClusterIP (Do Not Expose Ports)
+                    - value: Simple
+                      description: Deprecated CHANGE THIS
               - variable: loadBalancerIP
                 label: LoadBalancer IP
                 description: "MetalLB Only: Selects the Loadbalancer IP to expose on. Required when using PortalButton with MetalLB"
@@ -193,7 +186,7 @@ questions:
                             description: "This port exposes the container port on the service"
                             schema:
                               type: int
-                              default: 10200
+                              default: 9117
                               required: true
   - variable: serviceexpert
     group: Networking and Services
@@ -207,10 +200,9 @@ questions:
           group: Networking and Services
           label: Host-Networking (Complicated)
           schema:
-            hidden: true
             type: boolean
             default: false
-        - variable: scaleExternalInterface
+        - variable: externalInterfaces
           description: Add External Interfaces
           label: Add external Interfaces
           group: Networking
@@ -251,41 +243,41 @@ questions:
                                   description: Use DHCP
                                 - value: static
                                   description: Use Static IP
-                          - variable: staticIPConfigurations
-                            label: Static IP Addresses
-                            schema:
-                              type: list
-                              show_if: [["type", "=", "static"]]
-                              items:
-                                - variable: staticIP
-                                  label: Static IP
+                              show_subquestions_if: static
+                              subquestions:
+                                - variable: staticIPConfigurations
+                                  label: Static IP Addresses
                                   schema:
-                                    type: ipaddr
-                                    cidr: true
-                          - variable: staticRoutes
-                            label: Static Routes
-                            schema:
-                              type: list
-                              show_if: [["type", "=", "static"]]
-                              items:
-                                - variable: staticRouteConfiguration
-                                  label: Static Route Configuration
-                                  schema:
-                                    additional_attrs: true
-                                    type: dict
-                                    attrs:
-                                      - variable: destination
-                                        label: Destination
+                                    type: list
+                                    items:
+                                      - variable: staticIP
+                                        label: Static IP
                                         schema:
                                           type: ipaddr
                                           cidr: true
-                                          required: true
-                                      - variable: gateway
-                                        label: Gateway
+                                - variable: staticRoutes
+                                  label: Static Routes
+                                  schema:
+                                    type: list
+                                    items:
+                                      - variable: staticRouteConfiguration
+                                        label: Static Route Configuration
                                         schema:
-                                          type: ipaddr
-                                          cidr: false
-                                          required: true
+                                          additional_attrs: true
+                                          type: dict
+                                          attrs:
+                                            - variable: destination
+                                              label: Destination
+                                              schema:
+                                                type: ipaddr
+                                                cidr: true
+                                                required: true
+                                            - variable: gateway
+                                              label: Gateway
+                                              schema:
+                                                type: ipaddr
+                                                cidr: false
+                                                required: true
         - variable: serviceList
           label: Add Manual Custom Services
           group: Networking and Services
@@ -399,15 +391,15 @@ questions:
                                   label: Port Type
                                   schema:
                                     type: string
-                                    default: tcp
+                                    default: TCP
                                     enum:
-                                      - value: http
+                                      - value: HTTP
                                         description: HTTP
-                                      - value: https
+                                      - value: HTTPS
                                         description: HTTPS
-                                      - value: tcp
+                                      - value: TCP
                                         description: TCP
-                                      - value: udp
+                                      - value: UDP
                                         description: UDP
                                 - variable: targetPort
                                   label: Target Port
@@ -430,147 +422,7 @@ questions:
       attrs:
         - variable: config
           label: "App Config Storage"
-          description: "Stores the Application Data."
-          schema:
-            additional_attrs: true
-            type: dict
-            attrs:
-              - variable: type
-                label: Type of Storage
-                description: Sets the persistence type, Anything other than PVC could break rollback!
-                schema:
-                  type: string
-                  default: pvc
-                  enum:
-                    - value: pvc
-                      description: PVC
-                    - value: hostPath
-                      description: Host Path
-                    - value: emptyDir
-                      description: emptyDir
-                    - value: nfs
-                      description: NFS Share
-              - variable: server
-                label: NFS Server
-                schema:
-                  show_if: [["type", "=", "nfs"]]
-                  type: string
-                  default: ""
-              - variable: path
-                label: Path on NFS Server
-                schema:
-                  show_if: [["type", "=", "nfs"]]
-                  type: string
-                  default: ""
-              - variable: setPermissions
-                label: Automatic Permissions
-                description: Automatically set permissions on install
-                schema:
-                  show_if: [["type", "=", "hostPath"]]
-                  type: boolean
-                  default: false
-              - variable: readOnly
-                label: Read Only
-                schema:
-                  type: boolean
-                  default: false
-              - variable: hostPath
-                label: Host Path
-                description: Path inside the container the storage is mounted
-                schema:
-                  show_if: [["type", "=", "hostPath"]]
-                  type: hostpath
-              - variable: medium
-                label: EmptyDir Medium
-                schema:
-                  show_if: [["type", "=", "emptyDir"]]
-                  type: string
-                  default: ""
-                  enum:
-                    - value: ""
-                      description: Default
-                    - value: Memory
-                      description: Memory
-              - variable: size
-                label: Size quotum of Storage (Do NOT REDUCE after installation)
-                description: This value can ONLY be INCREASED after the installation
-                schema:
-                  show_if: [["type", "=", "pvc"]]
-                  type: string
-                  default: 256Gi
-        - variable: data
-          label: "App Data Storage"
-          description: "Stores the Application Data."
-          schema:
-            additional_attrs: true
-            type: dict
-            attrs:
-              - variable: type
-                label: Type of Storage
-                description: Sets the persistence type, Anything other than PVC could break rollback!
-                schema:
-                  type: string
-                  default: pvc
-                  enum:
-                    - value: pvc
-                      description: PVC
-                    - value: hostPath
-                      description: Host Path
-                    - value: emptyDir
-                      description: emptyDir
-                    - value: nfs
-                      description: NFS Share
-              - variable: server
-                label: NFS Server
-                schema:
-                  show_if: [["type", "=", "nfs"]]
-                  type: string
-                  default: ""
-              - variable: path
-                label: Path on NFS Server
-                schema:
-                  show_if: [["type", "=", "nfs"]]
-                  type: string
-                  default: ""
-              - variable: setPermissions
-                label: Automatic Permissions
-                description: Automatically set permissions on install
-                schema:
-                  show_if: [["type", "=", "hostPath"]]
-                  type: boolean
-                  default: false
-              - variable: readOnly
-                label: Read Only
-                schema:
-                  type: boolean
-                  default: false
-              - variable: hostPath
-                label: Host Path
-                description: Path inside the container the storage is mounted
-                schema:
-                  show_if: [["type", "=", "hostPath"]]
-                  type: hostpath
-              - variable: medium
-                label: EmptyDir Medium
-                schema:
-                  show_if: [["type", "=", "emptyDir"]]
-                  type: string
-                  default: ""
-                  enum:
-                    - value: ""
-                      description: Default
-                    - value: Memory
-                      description: Memory
-              - variable: size
-                label: Size quotum of Storage (Do NOT REDUCE after installation)
-                description: This value can ONLY be INCREASED after the installation
-                schema:
-                  show_if: [["type", "=", "pvc"]]
-                  type: string
-                  default: 256Gi
-        - variable: database
-          label: "App Database Storage"
-          description: "Stores the Application Datase."
+          description: "Stores the Application Configuration."
           schema:
             additional_attrs: true
             type: dict
@@ -789,8 +641,8 @@ questions:
                                                 type: string
                                                 required: true
                                                 default: Prefix
-                    - variable: certificateIssuer
-                      label: Cert-Manager clusterIssuer
+                    - variable: clusterIssuer
+                      label: clusterIssuer
                       description: 'add the name of your cert-manager clusterIssuer here for automatic tls certificates. Cannot be used combined with tls option below'
                       schema:
                         type: string
@@ -799,7 +651,7 @@ questions:
                       label: TLS-Settings
                       schema:
                         type: list
-                        show_if: [["certificateIssuer", "=", ""]]
+                        show_if: [["clusterIssuer", "=", ""]]
                         default: []
                         items:
                           - variable: tlsEntry
@@ -821,7 +673,7 @@ questions:
                                           default: ""
                                           required: true
 
-                                - variable: certificateIssuer
+                                - variable: clusterIssuer
                                   label: Use Cert-Manager clusterIssuer
                                   description: 'add the name of your cert-manager clusterIssuer here for automatic tls certificates.'
                                   schema:
@@ -830,14 +682,14 @@ questions:
                                 - variable: scaleCert
                                   label: Use TrueNAS SCALE Certificate (Deprecated)
                                   schema:
-                                    show_if: [["certificateIssuer", "=", ""]]
+                                    show_if: [["clusterIssuer", "=", ""]]
                                     type: int
                                     $ref:
                                       - "definitions/certificate"
                                 - variable: secretName
                                   label: Use Custom Secret (Advanced)
                                   schema:
-                                    show_if: [["certificateIssuer", "=", ""]]
+                                    show_if: [["clusterIssuer", "=", ""]]
                                     type: string
                                     default: ""
                     - variable: entrypoint
@@ -1035,33 +887,32 @@ questions:
             type: dict
             attrs:
               # Settings from questions.yaml get appended here on a per-app basis
-
               - variable: runAsUser
                 label: "runAsUser"
                 description: "The UserID of the user running the application"
                 schema:
                   type: int
-                  default: 0
+                  default: 568
               - variable: runAsGroup
                 label: "runAsGroup"
                 description: "The groupID this App of the user running the application"
                 schema:
                   type: int
-                  default: 0
+                  default: 568
               # Settings from questions.yaml get appended here on a per-app basis
               - variable: PUID
                 label: Process User ID - PUID
                 description: When supported by the container, this sets the User ID running the Application Process. Not supported by all Apps
                 schema:
                   type: int
-                  show_if: [["runAsUser", "=", 0]]
+                  show_if: [["runAsUser", "==", "0"]]
                   default: 568
               - variable: UMASK
                 label: UMASK
                 description: When supported by the container, this sets the UMASK for the App. Not supported by all Apps
                 schema:
                   type: string
-                  default: "0022"
+                  default: "002"
               - variable: advanced
                 label: Show Advanced Settings
                 description: Advanced settings are not covered by TrueCharts Support
@@ -1080,40 +931,13 @@ questions:
                       schema:
                         type: boolean
                         default: true
-        - variable: pod
-          label: Pod
-          schema:
-            additional_attrs: true
-            type: dict
-            attrs:
-              - variable: fsGroupChangePolicy
-                label: "When should we take ownership?"
-                schema:
-                  type: string
-                  default: OnRootMismatch
-                  enum:
-                    - value: OnRootMismatch
-                      description: OnRootMismatch
-                    - value: Always
-                      description: Always
-              - variable: supplementalGroups
-                label: Supplemental Groups
-                schema:
-                  type: list
-                  default: []
-                  items:
-                    - variable: supplementalGroupsEntry
-                      label: Supplemental Group
-                      schema:
-                        type: int
-              # Settings from questions.yaml get appended here on a per-app basis
+
               - variable: fsGroup
                 label: "fsGroup"
                 description: "The group that should own ALL storage."
                 schema:
                   type: int
                   default: 568
-
   - variable: resources
     group: Resources and Devices
     label: "Resource Limits"

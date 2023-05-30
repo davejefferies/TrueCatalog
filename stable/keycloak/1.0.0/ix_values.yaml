@@ -1,7 +1,19 @@
 image:
   repository: keycloak/keycloak
   pullPolicy: IfNotPresent
-  tag: 21.1
+  tag: 21.1@sha256:cee8a0b343993b699a3d3eeb90e0b1eca2fa19285a413200af9785db8b00dcd7
+
+securityContext:
+  container:
+    readOnlyRootFilesystem: false
+
+service:
+  main:
+    ports:
+      main:
+        protocol: http
+        targetPort: 9117
+        port: 8080
 
 workload:
   main:
@@ -10,35 +22,16 @@ workload:
         main:
           probes:
             liveness:
-              type: http
-              path: /
+              path: "/"
             readiness:
-              type: http
-              path: /
+              path: "/"
             startup:
-              type: http
-              path: /
-          env:
-            KEYCLOAK_ADMIN: "admin"
-            KEYCLOAK_ADMIN_PASSWORD: "admin"
-
-service:
-  main:
-    ports:
-      main:
-        port: 10200
-        targetPort: 8080
+              path: "/"
 
 persistence:
   config:
     enabled: true
-    mountPath: /config
-  database:
-    enabled: true
-    mountPath: /database
-  data:
-    enabled: true
-    mountPath: /data
+    mountPath: "/config"
 
 portal:
   open:
